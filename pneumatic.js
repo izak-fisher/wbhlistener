@@ -7,8 +7,8 @@ export async function completeTaskByAI({dataFromPneumatic}) {
     }
     const pneumaticEndpoint = `https://api.pneumatic.app/${dataFromPneumatic.workflow.id}/task-complete`
     //field-b8a9f2 - the task output field
-    const systemPromtField = dataFromPneumatic.kickoff.output.find(output=>output.name === "System prompt")
-    const userPromptField = dataFromPneumatic.kickoff.output.find(output=>output.name === "User prompt")
+    const systemPromtField = dataFromPneumatic.workflow.kickoff.output.find(output=>output.name === "System prompt")
+    const userPromptField = dataFromPneumatic.workflow.kickoff.output.find(output=>output.name === "User prompt")
     let systemPrompt = "none"
     let userPrompt = "none"
     if (systemPromtField) systemPrompt = systemPromtField.value
