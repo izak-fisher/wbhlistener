@@ -5,7 +5,7 @@ export async function completeTaskByAI({dataFromPneumatic}) {
         'Authorization': `Bearer ${pneumaticApiKey}`,
         'Content-Type': 'application/json',
     }
-    const pneumaticEndpoint = `https://api.pneumatic.app/${dataFromPneumatic.workflow.id}/task-complete`
+    const pneumaticEndpoint = `https://api.pneumatic.app/workflows/${dataFromPneumatic.workflow.id}/task-complete`
     //field-b8a9f2 - the task output field
     const systemPromtField = dataFromPneumatic.workflow.kickoff.output.find(output=>output.name === "System prompt")
     const userPromptField = dataFromPneumatic.workflow.kickoff.output.find(output=>output.name === "User prompt")
