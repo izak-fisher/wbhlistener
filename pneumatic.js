@@ -16,7 +16,7 @@ export async function completeTaskByAI({dataFromPneumatic}) {
     const payLoad = {
         task_api_name: dataFromPneumatic.workflow.current_task.api_name,
         output: {       
-            'field-b8a9f2': `AI response based on ${systemPrompt} and ${userPromt}`
+            'field-b8a9f2': `AI response based on ${systemPrompt} and ${userPrompt}`
          }
     }
     const resp = await fetch(pneumaticEndpoint, {method:'POST', headers, body: JSON.stringify(payLoad)})
