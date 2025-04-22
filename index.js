@@ -13,8 +13,11 @@ app.get('/', (req, res) => {
 app.post('/wbhk', async (req, res) => {
   console.log('🔔 Webhook payload:', req.body);
   res.json({ received: true });
-  const result = await completeTaskByAI({dataFromPneumatic: req.body})
-  console.log(result);
+  if (req.body.workflow.template.id === 43851){
+    const result = await completeTaskByAI({dataFromPneumatic: req.body})
+    console.log(result);
+  }
+  
 });
 
 app.listen(PORT, () => {
