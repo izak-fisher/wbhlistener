@@ -15,14 +15,11 @@ export async function completeTaskByAI({dataFromPneumatic}) {
     if (userPromptField) userPrompt = userPromptField.value
     const payLoad = {
         task_api_name: dataFromPneumatic.workflow.current_task.api_name,
+        user_id:4113,
         output: {       
             'field-b8a9f2': `AI response based on ${systemPrompt} and ${userPrompt}`
          }
     }
     const resp = await fetch(pneumaticEndpoint, {method:'POST', headers, body: JSON.stringify(payLoad)})
-    if (resp.ok) {
-        return true
-    }else{
-        return false
-    }
+    return resp
 }
