@@ -20,7 +20,7 @@ export async function completeTaskByAI({dataFromPneumatic}) {
          }
     }
     const resp = await fetch(pneumaticEndpoint, {method:'POST', headers, body: JSON.stringify(payLoad)})
-    if (resp.ol) {
+    if (resp.ok) {
         return true
     }else{
         return false
