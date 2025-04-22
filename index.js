@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 app.post('/wbhk', async (req, res) => {
   console.log('🔔 Webhook payload:', req.body);
   res.json({ received: true });
-  const res = await completeTaskByAI({dataFromPneumatic: req.body})
-  console.log(res);
+  const result = await completeTaskByAI({dataFromPneumatic: req.body})
+  console.log(result);
 });
 
 app.listen(PORT, () => {
