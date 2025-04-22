@@ -1,5 +1,6 @@
 // index.js
 import express from 'express';
+import {completeTaskByAI} from './pneumatic';
 const app = express();
 const PORT = process.env.PORT || 10000;
 
@@ -9,9 +10,11 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
-app.post('/wbhk', (req, res) => {
+app.post('/wbhk', async (req, res) => {
   console.log('🔔 Webhook payload:', req.body);
   res.json({ received: true });
+  const res = await completeTaskByAI({dataFromPneumatic: req.body})
+  console.log(res);
 });
 
 app.listen(PORT, () => {
